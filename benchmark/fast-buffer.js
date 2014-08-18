@@ -3,7 +3,7 @@
 var Benchmark = require('benchmark');
 var suite = new Benchmark.Suite();
 
-var fastBuffer = require('../');
+var fastBuffer = require('../').fastBuffer;
 
 // add tests
 suite
@@ -17,7 +17,6 @@ suite
 })
 
 .add('new fastBuffer from size', function() {
-  // creating a buffer
   var buf = new fastBuffer(5);
 })
 

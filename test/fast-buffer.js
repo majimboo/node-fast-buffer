@@ -3,7 +3,7 @@
 var should = require('chai').should();
 var net    = require('net');
 
-var fastBuffer = require('../');
+var fastBuffer = require('../').fastBuffer;
 
 describe('fastBuffer', function () {
 
@@ -11,6 +11,7 @@ describe('fastBuffer', function () {
 
     it('should create from buffer', function (done) {
       var buf = new fastBuffer(new Buffer([0x01, 0x02, 0x03, 0x04, 0x05]));
+      buf.should.be.instanceof(fastBuffer);
       buf[0].should.equal(0x01);
       buf[1].should.equal(0x02);
       buf[2].should.equal(0x03);
@@ -22,6 +23,7 @@ describe('fastBuffer', function () {
 
     it('should create from byte array', function (done) {
       var buf = new fastBuffer([0x01, 0x02, 0x03, 0x04, 0x05]);
+      buf.should.be.instanceof(fastBuffer);
       buf[0].should.equal(0x01);
       buf[1].should.equal(0x02);
       buf[2].should.equal(0x03);
@@ -33,6 +35,7 @@ describe('fastBuffer', function () {
 
     it('should create from size', function (done) {
       var buf = new fastBuffer(5);
+      buf.should.be.instanceof(fastBuffer);
       buf.length.should.equal(5);
       done();
     });
@@ -62,6 +65,12 @@ describe('fastBuffer', function () {
     });
 
     it('should write buffer on socket', function (done) {
+      server.on('connection', function(client) {
+        client.on('data', function(data) {
+          done();
+        });
+      });
+
       socket.connect('/tmp/node-fast-buffer.sock');
 
       var buf = new fastBuffer(new Buffer([0x01, 0x02, 0x03, 0x04, 0x05]));
@@ -72,8 +81,6 @@ describe('fastBuffer', function () {
 
       var buf = new fastBuffer(5);
       socket.write(buf.toString()).should.equal(true);
-
-      done();
     });
 
   });
