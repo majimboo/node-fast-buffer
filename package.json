@@ -1,0 +1,35 @@
+{
+  "name": "fast-buffer",
+  "version": "0.0.0",
+  "description": "A faster way of handling buffers.",
+  "main": "fast-buffer.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/majimboo/node-fast-buffer"
+  },
+  "keywords": [
+    "node",
+    "javascript",
+    "buffer",
+    "net",
+    "stream"
+  ],
+  "author": "Majid Arif Siddiqui <me@majidarif.com> (http://blog.majidarif.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/majimboo/node-fast-buffer/issues"
+  },
+  "homepage": "https://github.com/majimboo/node-fast-buffer",
+  "devDependencies": {
+    "benchmark": "^1.0.0",
+    "chai": "^1.9.1",
+    "microtime": "^1.0.1",
+    "mocha": "^1.21.4"
+  }
+}
