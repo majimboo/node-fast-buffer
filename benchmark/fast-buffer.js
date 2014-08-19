@@ -18,6 +18,11 @@ suite
 
 .add('new fastBuffer from size', function() {
   var buf = new fastBuffer(5);
+  buf.writeUInt8(0x01);
+  buf.writeUInt8(0x02);
+  buf.writeUInt8(0x03);
+  buf.writeUInt8(0x04);
+  buf.writeUInt8(0x05);
 })
 
 // add listeners
