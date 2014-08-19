@@ -1,6 +1,11 @@
-Node Fast Buffer
+Node Fast Buffer [![Build Status](https://travis-ci.org/majimboo/node-fast-buffer.svg)](https://travis-ci.org/majimboo/node-fast-buffer)
 ================
+
+[![NPM](https://nodei.co/npm/fast-buffer.png?downloads=true)](https://nodei.co/npm/fast-buffer/)
+
 A faster way of handling Buffers, or so I say.
+
+> **Notice**: This is **NOT** a real buffer. But works better for certain use cases.
 
 Performance
 -----------
@@ -28,13 +33,25 @@ Installing
 
     $ npm install fast-buffer --save
 
+Installing the latest version
+
+    $ npm install git+https://github.com/majimboo/node-fast-buffer.git
+
+or for those without git
+
+    $ npm install http://github.com/majimboo/node-fast-buffer/tarball/master
 
 Usage - fastBuffer
 -------------------
 
     var fastBuffer = require('fast-buffer').fastBuffer;
+    var buf = new fastBuffer(5);
+    buf.writeUInt8(0x01);
+    buf.writeUInt8(0x02);
+    buf.writeUInt8(0x03);
+    buf.writeUInt8(0x04);
+    buf.writeUInt8(0x05);
 
-    var buf = new fastBuffer(5)
     var buf = new fastBuffer([0x01, 0x02, 0x03, 0x04, 0x05]);
     var buf = new fastBuffer(new Buffer([0x01, 0x02, 0x03, 0x04, 0x05]));
 
@@ -42,19 +59,24 @@ Usage - fasterBuffer
 ---------------------
 
     var fasterBuffer = require('fast-buffer').fasterBuffer;
+    var mainBuf = new fasterBuffer(5);
+    var buf = mainBuf.bytes;
+    buf.writeUInt8(0x01);
+    buf.writeUInt8(0x02);
+    buf.writeUInt8(0x03);
+    buf.writeUInt8(0x04);
+    buf.writeUInt8(0x05);
 
-    var buf = new fasterBuffer(5)
     var buf = new fasterBuffer([0x01, 0x02, 0x03, 0x04, 0x05]);
     var buf = new fasterBuffer(new Buffer([0x01, 0x02, 0x03, 0x04, 0x05]));
 
 Problem
 -------
 
-This isn't a real buffer, but it could work similarly when you use buffers for network data.
-I noticed the performance difference when I was doing some [benchmarks](https://github.com/majimboo/node-benchmarks).
-
 I needed a fast protocol for a **MMOG** server I was developing in **Node.JS**. My workflow was creating buffers and writing bits into it
 and sent the data with `socket.write()`. Then I realized that working with buffers is slow.
+
+I noticed the performance difference when I was doing some benchmark which results can be seen [here](https://github.com/majimboo/node-benchmarks).
 
 **How slow?**
 
@@ -77,7 +99,7 @@ Now let us see some benchmark:
 
     utf-8  x 1,629,796 ops/sec ±29.13% (54 runs sampled)
 
-You can try the benchmark [here] by running
+You can try the benchmark [here]() by running
 
     node benchmark/buffer-vs-utf8
 
