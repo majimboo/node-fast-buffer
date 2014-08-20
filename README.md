@@ -34,8 +34,8 @@ Usage
 Documentation
 -------------
 
-- [FastBuffer API](docs/fastBuffer.html)
-- [FasterBuffer API](docs/fasterBuffer.html)
+- [FastBuffer API](http://htmlpreview.github.io/?https://github.com/majimboo/node-fast-buffer/blob/master/docs/fastBuffer.html)
+- [FasterBuffer API](http://htmlpreview.github.io/?https://github.com/majimboo/node-fast-buffer/blob/master/docs/fasterBuffer.html)
 - [Tutorials](doc/)
 
 # WORK IN PROGRESS - TBC#
