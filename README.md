@@ -2,7 +2,7 @@ Node Fast Buffer [![Build Status](https://travis-ci.org/majimboo/node-fast-buffe
 ================
 [![NPM](https://nodei.co/npm/fast-buffer.png?downloads=true)](https://nodei.co/npm/fast-buffer/)
 
-A faster way of handling Buffers, or so I say. [`see`](doc/story.md)
+A faster way of handling Buffers, or so I say.
 
 > **Warning**: This is technically **NOT** a real buffer.
 
@@ -34,9 +34,8 @@ Usage
 Documentation
 -------------
 
-- [fastBuffer](doc/fast_buffer.md)
-  - [#new fastBuffer(buffer)](doc/fast_buffer.md)
-  - [#new fastBuffer(array)](doc/fast_buffer.md)
-  - [#new fastBuffer(size)](doc/fast_buffer.md)
+- [FastBuffer API](docs/fastBuffer.html)
+- [FasterBuffer API](docs/fasterBuffer.html)
+- [Tutorials](doc/)
 
 # WORK IN PROGRESS - TBC#
