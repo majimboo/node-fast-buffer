@@ -149,6 +149,58 @@ describe('fastBuffer', function () {
 
   });
 
+  describe('#writeUInt32LE', function () {
+
+    it('should write uint32 littleEndian with auto offset', function(done) {
+      var buf = new fastBuffer(4);
+      buf.writeUInt32LE(0x0100);
+      buf[0].should.equal(0x00);
+      buf[1].should.equal(0x01);
+      buf[2].should.equal(0x00);
+      buf[3].should.equal(0x00);
+      buf.length.should.equal(4);
+      done();
+    });
+
+    it('should write uint32 littleEndian with manual offset', function(done) {
+      var buf = new fastBuffer(4);
+      buf.writeUInt32LE(0x0100, 0);
+      buf[0].should.equal(0x00);
+      buf[1].should.equal(0x01);
+      buf[2].should.equal(0x00);
+      buf[3].should.equal(0x00);
+      buf.length.should.equal(4);
+      done();
+    });
+
+  });
+
+  describe('#writeUInt32BE', function () {
+
+    it('should write uint32 bigEndian with auto offset', function(done) {
+      var buf = new fastBuffer(4);
+      buf.writeUInt32BE(0x0100);
+      buf[0].should.equal(0x00);
+      buf[1].should.equal(0x00);
+      buf[2].should.equal(0x01);
+      buf[3].should.equal(0x00);
+      buf.length.should.equal(4);
+      done();
+    });
+
+    it('should write uint32 bigEndian with manual offset', function(done) {
+      var buf = new fastBuffer(4);
+      buf.writeUInt32BE(0x0100, 0);
+      buf[0].should.equal(0x00);
+      buf[1].should.equal(0x00);
+      buf[2].should.equal(0x01);
+      buf[3].should.equal(0x00);
+      buf.length.should.equal(4);
+      done();
+    });
+
+  });
+
   describe('#encode', function () {
     var socket, server;
 
@@ -242,7 +294,7 @@ describe('fastBuffer', function () {
       sliced[4].should.equal(0x05);
       sliced.length.should.equal(5);
       done();
-    });    
+    });
   });
 
 });
