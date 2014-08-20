@@ -1,6 +1,6 @@
 {
   "name": "fast-buffer",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A faster way of handling buffers.",
   "main": "index.js",
   "directories": {

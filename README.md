@@ -5,7 +5,7 @@ Node Fast Buffer [![Build Status](https://travis-ci.org/majimboo/node-fast-buffe
 
 A faster way of handling Buffers, or so I say.
 
-> **Notice**: This is **NOT** a real buffer. But works better for certain use cases.
+> **Notice**: This is **NOT** a real buffer. But works faster for certain use cases.
 
 Performance
 -----------
@@ -42,7 +42,7 @@ or for those without git
     $ npm install http://github.com/majimboo/node-fast-buffer/tarball/master
 
 Usage - fastBuffer
--------------------
+------------------
 
     var fastBuffer = require('fast-buffer').fastBuffer;
     var buf = new fastBuffer(5);
@@ -55,8 +55,28 @@ Usage - fastBuffer
     var buf = new fastBuffer([0x01, 0x02, 0x03, 0x04, 0x05]);
     var buf = new fastBuffer(new Buffer([0x01, 0x02, 0x03, 0x04, 0x05]));
 
+    // create new buffer
+    var buf = new fastBuffer([0x05, 0x07, 0x02, 0x05, 0x09]);
+
+    // do some processing like 
+    // - encrypt the buffer
+    for (var i = 0; i < buf.length; i++) {
+      buf[i] ^= 0x02;
+      buf[i] ^= 0x03;
+      buf[i] ^= 0x01;
+      buf[i] ^= 0x02;
+      buf[i] ^= 0x03;
+    }
+    // - append the size
+    var buf_w_size = new fastBuffer([0x00, 0x00, 0x00, 0x00, 0x00, 0x00]);
+    buf.copy(buf_w_size, 1);
+    buf_w_size.writeUInt8(buf_w_size.length, 0);
+
+    // send data
+    socket.write(buf_w_size.encode());
+
 Usage - fasterBuffer
----------------------
+--------------------
 
     var fasterBuffer = require('fast-buffer').fasterBuffer;
     var mainBuf = new fasterBuffer(5);
@@ -73,8 +93,8 @@ Usage - fasterBuffer
 Problem
 -------
 
-I needed a fast protocol for a **MMOG** server I was developing in **Node.JS**. My workflow was creating buffers and writing bits into it
-and sent the data with `socket.write()`. Then I realized that working with buffers is slow.
+I needed a fast protocol for a **MMOG** server I was developing in **Node.JS**. My workflow was creating buffers, writing bits into it, encrypting,
+then sent the data with `socket.write()`.
 
 I noticed the performance difference when I was doing some benchmark which results can be seen [here](https://github.com/majimboo/node-benchmarks).
 

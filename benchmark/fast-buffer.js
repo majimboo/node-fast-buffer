@@ -8,21 +8,31 @@ var fastBuffer = require('../').fastBuffer;
 // add tests
 suite
 
-.add('new fastBuffer from buffer', function() {
+.add('new from buffer', function() {
   var buf = new fastBuffer(new Buffer([0x01, 0x02, 0x03, 0x04, 0x05]));
 })
 
-.add('new fastBuffer from byte array', function() {
+.add('new from bytes', function() {
   var buf = new fastBuffer([0x01, 0x02, 0x03, 0x04, 0x05]);
 })
 
-.add('new fastBuffer from size', function() {
+.add('new from size', function() {
   var buf = new fastBuffer(5);
   buf.writeUInt8(0x01);
   buf.writeUInt8(0x02);
   buf.writeUInt8(0x03);
   buf.writeUInt8(0x04);
   buf.writeUInt8(0x05);
+})
+
+.add('encode', function() {
+  var buf = new fastBuffer([0x01, 0x02, 0x03, 0x04, 0x05]);
+  var encoded = buf.encode();
+})
+
+.add('decode', function() {
+  var buf = new fastBuffer([0x01, 0x02, 0x03, 0x04, 0x05]);
+  var decoded = buf.decode();
 })
 
 // add listeners
