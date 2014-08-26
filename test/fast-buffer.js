@@ -40,6 +40,13 @@ describe('fastBuffer', function () {
       done();
     });
 
+    it('should create from string', function (done) {
+      var buf = new fastBuffer('Hello World');
+      buf.should.be.instanceof(fastBuffer);
+      buf.encode().should.equal('Hello World');
+      done();
+    });
+
     it('should error if fastBuffer is created with input', function(done) {
       (function () {
         new fastBuffer();
