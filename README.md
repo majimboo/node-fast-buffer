@@ -10,6 +10,9 @@ Performance
 -----------
 You can find the benchmark code [here](benchmark/showdown.js).
 
+Run your own benchmark with:
+
+    $ node benchmark/showdown
     Buffer     x 467,927 ops/sec ±40.33% (65 runs sampled)
     fastBuffer x 611,158 ops/sec ±23.73% (68 runs sampled)
 
@@ -38,4 +41,10 @@ Documentation
 - [FasterBuffer API](http://htmlpreview.github.io/?https://github.com/majimboo/node-fast-buffer/blob/master/docs/fasterBuffer.html)
 - [Tutorials](doc/)
 
-# WORK IN PROGRESS - TBC#
+TODO
+----
+
+- Make it 100% node buffer API compatible
+
+# WORK IN PROGRESS - TBC #
+
